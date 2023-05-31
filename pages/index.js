@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import MeetupList from '../components/meetups/MeetupList';
 
 const DUMMY_MEETUPS = [
@@ -20,17 +20,21 @@ const DUMMY_MEETUPS = [
   },
 ];
 
-const HomePage = () => {
-  const [loadedMeetups, setLoadedMeetups] = useState([]);
-  useEffect(() => {
-    // send http request and fetch data
-    setLoadedMeetups(DUMMY_MEETUPS);
-  }, []);
+const HomePage = (props) => {
   return (
     <Fragment>
-      <MeetupList meetups={loadedMeetups} />
+      <MeetupList meetups={props.meetups} />
     </Fragment>
   );
 };
+
+export async function getStaticProps() {
+  //fetch data from API
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+  };
+}
 
 export default HomePage;
