@@ -15,7 +15,7 @@ const MeetupDetails = (props) => {
         image={props.meetupData.image}
         title={props.meetupData.title}
         address={props.meetupData.address}
-        derscription={props.meetupData.description}
+        description={props.meetupData.description}
       />
     </Fragment>
   );
